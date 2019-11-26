@@ -30,6 +30,13 @@
     "scripts": {
         "teste": "phpunit teste/testeB",
         "cs": "phpcs --standard=PSR12 src/",
-        "phan": "phan --allow-polyfill-parser"
+        "phan": "phan --allow-polyfill-parser",
+        "check": [
+            "@phan",
+            "@cs"
+        ]
+    },
+    "scripts-descriptions": {
+        "check": "Roda as Verificações do Código."
     }
 }
