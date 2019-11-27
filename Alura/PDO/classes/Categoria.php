@@ -1,5 +1,7 @@
 <?php
 
+require "Conexao.php";
+
 class Categoria
 {
 
@@ -9,16 +11,35 @@ class Categoria
     public function listar()
     {
         $query = "SELECT id, nome FROM categorias";
-        $conexao = new PDO('mysql:host=127.0.0.1;dbname=estoque', 'root', '96578396');
+        $conexao = Conexao::pegarConexao();
         $resultado = $conexao->query($query);
         $lista = $resultado->fetchAll();
         return $lista;
     }
 
+    public function carregar()
+    {
+
+        $query = "SELECT id, Nome FROM categorias WHERE id = {$this->id}";
+        $conexao = Conexao::pegarConexao();
+        $resultado = $conexao->query($query);
+        $lista = $resultado->fetchAll();
+        foreach ($lista as $linha) {
+            return $linha;
+        }
+    }
+
     public function inserir()
     {
         $query = "INSERT INTO categorias (nome) VALUES ('". $this->nome . "')";
-        $conexao = new PDO('mysql:host=127.0.0.1;dbname=estoque', 'root', '96578396');
+        $conexao = Conexao::pegarConexao();
         $conexao->exec($query);
+    }
+
+    public function atualizar()
+    {
+        $query = "UPDATE categorias SET nome = '{$this->nome}' WHERE id = {$this->id}" ;
+        $conexao = Conexao::pegarConexao();
+        $resultado = $conexao->exec($query);
     }
 }
