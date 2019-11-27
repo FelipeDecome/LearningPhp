@@ -3,7 +3,7 @@
 class Config
 {
 
-	const DB_TYPE = "mysql";
+	const DB_DRIVE = "mysql";
 
 	const DB_HOST = "127.0.0.1";
 
@@ -12,7 +12,5 @@ class Config
 	const DB_USER = "root";
 
 	const DB_PASS = "96578396";
-
-	const DB_CHARSET = "utf8";
 
 }
