@@ -3,6 +3,8 @@
 class Config
 {
 
+    const DEBUG = false;
+
 	const DB_DRIVE = "mysql";
 
 	const DB_HOST = "127.0.0.1";

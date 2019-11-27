@@ -15,7 +15,7 @@ class Categoria
     }
 
     public function listar()
-    {
+    {        
         $query = "SELECT id, nome FROM categorias";
         $conexao = Conexao::pegarConexao();
         $resultado = $conexao->query($query);
@@ -25,7 +25,6 @@ class Categoria
 
     public function carregar()
     {
-
         $query = "SELECT id, Nome FROM categorias WHERE id = {$this->id}";
         $conexao = Conexao::pegarConexao();
         $resultado = $conexao->query($query);

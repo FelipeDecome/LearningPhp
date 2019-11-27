@@ -2,11 +2,15 @@
 
 require_once 'global.php';
 
-$id = filter_input(INPUT_POST, 'id');
-$nome = filter_input(INPUT_POST, 'nome');
+    try
+        $id = filter_input(INPUT_POST, 'id');
+        $nome = filter_input(INPUT_POST, 'nome');
 
-$categoria = new Categoria($id);
-$categoria->nome = $nome;
-$categoria->atualizar();
+        $categoria = new Categoria($id);
+        $categoria->nome = $nome;
+        $categoria->atualizar();
+        header("location:categorias.php?");
+    } catch(Exception $e) {
+        Erro::trataErro($e);
+    }
 
-header("location:categorias.php?");
