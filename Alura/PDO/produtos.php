@@ -1,4 +1,17 @@
 <?php require_once 'cabecalho.php' ?>
+<?php require_once 'global.php' ?>
+
+<?php 
+
+    try {
+        $lista = Produto::listar();
+        //var_dump($lista);
+    } catch (Exception $e) {
+        Erro::trataErro($e);
+    }
+
+?>
+
 <div class="row">
     <div class="col-md-12">
         <h2>Produtos</h2>
@@ -26,15 +39,17 @@
             </tr>
             </thead>
             <tbody>
+                <?php foreach($lista as $item): ?>
                 <tr>
-                    <td>1</td>
-                    <td>O Senhor dos Aneis</td>
-                    <td>R$ 80,55</td>
-                    <td>2</td>
-                    <td>Livros</td>
-                    <td><a href="/produtos-editar.php" class="btn btn-info">Editar</a></td>
+                    <td><?php echo $item['id'] ?></td>
+                    <td><?php echo $item['nome'] ?></td>
+                    <td><?php echo $item['preco'] ?></td>
+                    <td><?php echo $item['quantidade'] ?></td>
+                    <td><?php echo $item['categoria_nome'] ?></td>
+                    <td><a href="/produtos-editar.php?id=<?php echo $item['id'] ?>" class="btn btn-info">Editar</a></td>
                     <td><a href="#" class="btn btn-danger">Excluir</a></td>
                 </tr>
+                <?php endforeach ?>
             </tbody>
         </table>
     </div>
