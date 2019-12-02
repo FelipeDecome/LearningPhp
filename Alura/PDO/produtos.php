@@ -26,6 +26,7 @@
 
 <div class="row">
     <div class="col-md-12">
+        <?php if (count($lista) > 0): ?>
         <table class="table">
             <thead>
             <tr>
@@ -46,12 +47,15 @@
                     <td><?php echo $item['preco'] ?></td>
                     <td><?php echo $item['quantidade'] ?></td>
                     <td><?php echo $item['categoria_nome'] ?></td>
-                    <td><a href="/produtos-editar.php?id=<?php echo $item['id'] ?>" class="btn btn-info">Editar</a></td>
-                    <td><a href="#" class="btn btn-danger">Excluir</a></td>
+                    <td><a href="produtos-editar.php?id=<?php echo $item['id'] ?>" class="btn btn-info">Editar</a></td>
+                    <td><a href="produtos-excluir-post.php?id=<?php echo $item['id'] ?>" class="btn btn-danger">Excluir</a></td>
                 </tr>
                 <?php endforeach ?>
             </tbody>
         </table>
+        <?php else: ?>
+        <p>Nenhum Produto Cadastrado!</p>
+        <?php endif ?>
     </div>
 </div>
 <?php require_once 'rodape.php' ?>

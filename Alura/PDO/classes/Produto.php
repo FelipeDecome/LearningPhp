@@ -9,12 +9,13 @@ class Produto
     public $preco;
     public $categoria_id;
 
-    public function listar()
+    public static function listar()
     {
         $query = 
         "SELECT p.id, p.nome, p.preco, p.quantidade, c.nome as categoria_nome
         FROM produtos p
-        INNER JOIN categorias c ON p.categoria_id = c.id";
+        INNER JOIN categorias c ON p.categoria_id = c.id 
+        ORDER BY p.id";
         $conexao = Conexao::pegarConexao();
         $result = $conexao->query($query);
         $lista = $result->fetchAll();
@@ -22,4 +23,17 @@ class Produto
         return $lista;
     }
 
+    public function inserir()
+    {
+        $query = 
+        "INSERT INTO produtos (nome, preco, quantidade, categoria_id) 
+        VALUES (:nome, :preco, :quantidade, :categoria_id)";
+        $conexao = Conexao::pegarConexao();
+        $stmt = $conexao->prepare($query);
+        $stmt->bindValue(':nome', $this->nome);
+        $stmt->bindValue(':preco', $this->preco);
+        $stmt->bindValue(':quantidade', $this->quantidade);
+        $stmt->bindValue(':categoria_id', $this->categoria_id);
+        $stmt->execute();
+    }
 }

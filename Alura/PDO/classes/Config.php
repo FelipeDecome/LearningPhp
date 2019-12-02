@@ -15,4 +15,6 @@ class Config
 
 	const DB_PASS = "96578396";
 
+    const DB_CHARSET = "utf8";
+
 }

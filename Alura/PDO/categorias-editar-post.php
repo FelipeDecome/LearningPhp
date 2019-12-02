@@ -2,7 +2,7 @@
 
 require_once 'global.php';
 
-    try
+    try {
         $id = filter_input(INPUT_POST, 'id');
         $nome = filter_input(INPUT_POST, 'nome');
 

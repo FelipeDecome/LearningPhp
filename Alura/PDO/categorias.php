@@ -2,8 +2,7 @@
 <?php
 
     try{
-        $categoria = new Categoria();
-        $lista = $categoria->listar();
+        $lista = Categoria::listar();
     } catch(Exception $e) {
         Erro::trataErro($e);
     }
