@@ -9,6 +9,14 @@ class Produto
     public $preco;
     public $categoria_id;
 
+    public function __construct($id = false)
+    {
+        if ($id) {
+            $this->id = $id;
+            $this->carregar();
+        }
+    }
+
     public static function listar()
     {
         $query = 
@@ -30,6 +38,36 @@ class Produto
         VALUES (:nome, :preco, :quantidade, :categoria_id)";
         $conexao = Conexao::pegarConexao();
         $stmt = $conexao->prepare($query);
+        $stmt->bindValue(':nome', $this->nome);
+        $stmt->bindValue(':preco', $this->preco);
+        $stmt->bindValue(':quantidade', $this->quantidade);
+        $stmt->bindValue(':categoria_id', $this->categoria_id);
+        $stmt->execute();
+    }
+
+    public function carregar()
+    {
+        $query = "SELECT id, nome, preco, quantidade, categoria_id FROM produtos WHERE id = :id";
+        $conexao = Conexao::pegarConexao();
+        $stmt = $conexao->prepare($query);
+        $stmt->bindValue(':id', $this->id);
+        $stmt->execute();
+        $resultado = $stmt->fetch();
+
+        foreach ($resultado as $field => $value) {
+            $this->$field = $value;
+        }
+    }
+
+    public function atualizar()
+    {
+        $query = 
+        "UPDATE produtos 
+        SET id = :id, nome = :nome, preco = :preco, quantidade = :quantidade, categoria_id = :categoria_id 
+        WHERE id = :id";
+        $conexao = Conexao::pegarConexao();
+        $stmt = $conexao->prepare($query);
+        $stmt->bindValue(':id', $this->id);
         $stmt->bindValue(':nome', $this->nome);
         $stmt->bindValue(':preco', $this->preco);
         $stmt->bindValue(':quantidade', $this->quantidade);

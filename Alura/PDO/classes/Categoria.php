@@ -25,33 +25,42 @@ class Categoria
 
     public function carregar()
     {
-        $query = "SELECT id, Nome FROM categorias WHERE id = {$this->id}";
+        $query = "SELECT id, Nome FROM categorias WHERE id = :id";
         $conexao = Conexao::pegarConexao();
-        $resultado = $conexao->query($query);
-        $lista = $resultado->fetchAll();
-        foreach ($lista as $linha) {
-            $this->nome = $linha['Nome'];
-        }
+        $stmt = $conexao->prepare($query);
+        $stmt->bindValue(':id', $this->id);
+        $stmt->execute();
+        $lista = $stmt->fetch();
+        $this->nome = $lista['Nome'];
+
     }
 
     public function inserir()
     {
-        $query = "INSERT INTO categorias (nome) VALUES ('". $this->nome . "')";
+        $query = "INSERT INTO categorias (nome) VALUES (:nome)";
         $conexao = Conexao::pegarConexao();
-        $conexao->exec($query);
+        $stmt = $conexao->prepare($query);
+        $stmt->bindValue(':nome', $this->nome);
+        $stmt->execute();
     }
 
     public function atualizar()
     {
-        $query = "UPDATE categorias SET nome = '{$this->nome}' WHERE id = {$this->id}" ;
+        $query = "UPDATE categorias SET nome = :nome WHERE id = :id" ;
         $conexao = Conexao::pegarConexao();
-        $resultado = $conexao->exec($query);
+        $stmt = $conexao->prepare($query);
+        $stmt->bindValue(':nome', $this->nome);
+        $stmt->bindValue(':id', $this->id);
+        $stmt->execute();
+
     }
 
     public function deletar()
     {
-        $query = "DELETE FROM categorias WHERE id = {$this->id}";
+        $query = "DELETE FROM categorias WHERE id = :id";
         $conexao = Conexao::pegarConexao();
-        $resultado = $conexao->exec($query);
+        $stmt = $conexao->prepare($query);
+        $stmt->bindValue(':id', $this->id);
+        $stmt->execute();
     }
 }
