@@ -31,7 +31,6 @@ try {
         }
 
         //$newProduto->inserir();
-        header("location:produtos.php");
     }
 
 } catch (Exception $e) {
