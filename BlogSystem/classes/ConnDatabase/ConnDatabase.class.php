@@ -4,7 +4,7 @@ class ConnDatabase {
 
     private $host;
     private $database;
-    privare $user;
+    private $user;
     private $pass;
     private $charset;
 
