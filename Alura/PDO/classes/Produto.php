@@ -54,8 +54,12 @@ class Produto
         $stmt->execute();
         $resultado = $stmt->fetch();
 
+        var_dump($resultado);
+
         foreach ($resultado as $field => $value) {
-            $this->$field = $value;
+            if (!is_numeric($field)){
+                $this->$field = $value;
+            }
         }
     }
 
@@ -72,6 +76,15 @@ class Produto
         $stmt->bindValue(':preco', $this->preco);
         $stmt->bindValue(':quantidade', $this->quantidade);
         $stmt->bindValue(':categoria_id', $this->categoria_id);
+        $stmt->execute();
+    }
+
+    public function deletar()
+    {
+        $query = "DELETE FROM produtos WHERE id = :id";
+        $conexao = Conexao::pegarConexao();
+        $stmt = $conexao->prepare($query);
+        $stmt->bindValue(':id', $this->id);
         $stmt->execute();
     }
 }

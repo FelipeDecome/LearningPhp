@@ -40,8 +40,8 @@
                 <label for="categoria_id">Categoria do Produto</label>
                 <select name="categoria_id" class="form-control">
                     <?php foreach ($categorias as $categoria): ?>
-                    <?php $selected = ($categoria['id'] === $produto->categoria_id) ? "selected" : "" ?>
-                    <option value="<?php echo $categoria['id'] ?>" <?php echo $selected ?>> <?php echo $categoria['nome'] ?> </option>
+                        <?php $selected = ($categoria['id'] === $produto->categoria_id) ? "selected" : "" ?>
+                        <option value="<?php echo $categoria['id'] ?>" <?php echo $selected ?>> <?php echo $categoria['nome'] ?> </option>
                     <?php endforeach ?>
                 </select>
             </div>
