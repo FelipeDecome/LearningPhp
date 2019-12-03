@@ -3,7 +3,7 @@
 class Config
 {
 
-    const DEBUG = false;
+    const DEBUG = true;
 
 	const DB_DRIVE = "mysql";
 
