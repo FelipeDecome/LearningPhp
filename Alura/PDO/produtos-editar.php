@@ -21,9 +21,9 @@
 </div>
 
 <form action="produtos-editar-post.php" method="post">
+<input type="hidden" name="id" value="<?php echo $produto->id ?>">
     <div class="row">
         <div class="col-md-6 col-md-offset-3">
-            <input type="hidden" name="id" value="<?php echo $produto->id ?>">
             <div class="form-group">
                 <label for="nome">Nome do Produto</label>
                 <input name="nome" type="text" value="<?php echo $produto->nome ?>" class="form-control" placeholder="Nome do Produto" required>

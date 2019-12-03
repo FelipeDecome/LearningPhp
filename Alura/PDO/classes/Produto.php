@@ -54,8 +54,6 @@ class Produto
         $stmt->execute();
         $resultado = $stmt->fetch();
 
-        var_dump($resultado);
-
         foreach ($resultado as $field => $value) {
             if (!is_numeric($field)){
                 $this->$field = $value;
@@ -67,7 +65,7 @@ class Produto
     {
         $query = 
         "UPDATE produtos 
-        SET id = :id, nome = :nome, preco = :preco, quantidade = :quantidade, categoria_id = :categoria_id 
+        SET nome = :nome, preco = :preco, quantidade = :quantidade, categoria_id = :categoria_id 
         WHERE id = :id";
         $conexao = Conexao::pegarConexao();
         $stmt = $conexao->prepare($query);
