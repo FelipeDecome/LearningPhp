@@ -23,6 +23,10 @@ class ComposerStaticInit24a3873f910902981aa363566367076a
         array (
             'Psr\\Container\\' => 14,
         ),
+        'F' => 
+        array (
+            'Felipe\\Doctrine\\' => 16,
+        ),
         'D' => 
         array (
             'Doctrine\\ORM\\' => 13,
@@ -57,6 +61,10 @@ class ComposerStaticInit24a3873f910902981aa363566367076a
         'Psr\\Container\\' => 
         array (
             0 => __DIR__ . '/..' . '/psr/container/src',
+        ),
+        'Felipe\\Doctrine\\' => 
+        array (
+            0 => __DIR__ . '/../..' . '/src',
         ),
         'Doctrine\\ORM\\' => 
         array (
