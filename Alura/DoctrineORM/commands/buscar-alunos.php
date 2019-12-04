@@ -13,15 +13,16 @@ $alunoRepository = $entityManager->getRepository(Aluno::class);
 /** @var Aluno[] $alunoList */
 $alunoList = $alunoRepository->findAll();
 
-foreach ($alunoList as $aluno) {
-    echo "ID: {$aluno->getId()} > Nome: {$aluno->getNome()} <br/>";
-}
+/* foreach ($alunoList as $aluno) {
+    echo "ID: {$aluno->getId()} > Nome: {$aluno->getNome()} \n\n";
+} */
 
-$nico = $alunoRepository->find(4);
+$nico = $alunoRepository->find($argv[1]);
 echo $nico->getNome();
 
-$felipe = $alunoRepository->findBy([
-    'nome' => 'Felipe Decome'
+/* $felipe = $alunoRepository->findOneBy([
+    'id' => $argv[1]
 ]);
 
-var_dump($felipe);
+var_dump($felipe); 
+*/

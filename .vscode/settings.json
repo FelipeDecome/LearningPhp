@@ -1,0 +1,10 @@
+{
+    "sqltools.connections": [
+        {
+            "database": "${workspaceFolder}\\Alura/DoctrineORM/var/data/banco.sqlite",
+            "dialect": "SQLite",
+            "name": "DoctrineORM"
+        }
+    ],
+    "sqltools.useNodeRuntime": true
+}
