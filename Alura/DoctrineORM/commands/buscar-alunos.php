@@ -24,7 +24,7 @@ foreach ($alunoList as $aluno) {
             echo $aluno->getNome() . "\n\n";
         }
    } 
->>>>>>> eaf08a93f37ca19dd2814579729a46b6196ab306
+
 } */
 
 // foreach ($argv as $consults) {

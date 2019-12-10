@@ -20,7 +20,7 @@ class Aluno
      */
     private $nome;
     /**
-     * @ORM\OneToMany (targetEntity="Telefone", mappedBy="aluno")
+     * @OneToMany (targetEntity="Telefone", mappedBy="aluno")
      */
     private $telefones;
 
