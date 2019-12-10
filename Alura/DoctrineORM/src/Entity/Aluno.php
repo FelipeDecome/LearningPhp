@@ -2,9 +2,10 @@
 
 namespace Felipe\Doctrine\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
+
 /**
  * @Entity
- * 
  */
 class Aluno
 {
@@ -14,11 +15,19 @@ class Aluno
      * @Column (type="integer")
      */
     private $id;
-    
     /**
      * @Column (type="string")
      */
     private $nome;
+    /**
+     * @ORM\OneToMany (targetEntity="Telefone", mappedBy="aluno")
+     */
+    private $telefones;
+
+    public function __construct()
+    {
+        $this->telefones = new ArrayCollection();
+    }
     
     public function getId(): int
     {
@@ -35,5 +44,18 @@ class Aluno
     {
         $this->nome = $nome;
         return $this;
+    }
+
+    public function addTelefone(Telefone $telefone)
+    {
+        $this->telefones->add($telefone);
+        $telefone->setAluno($this);
+        
+        return $this;
+    }
+
+    public function getTelefones(): Collection
+    {
+        return $this->telefones;
     }
 }

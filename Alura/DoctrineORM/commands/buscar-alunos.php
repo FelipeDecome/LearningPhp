@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 use Felipe\Doctrine\Entity\Aluno;
 use Felipe\Doctrine\Helper\EntityManagerFactory;
@@ -14,15 +14,15 @@ $alunoRepository = $entityManager->getRepository(Aluno::class);
 $alunoList = $alunoRepository->findAll();
 
 /* foreach ($alunoList as $aluno) {
-    echo "ID: {$aluno->getId()} > Nome: {$aluno->getNome()} \n\n";
+echo "ID: {$aluno->getId()} > Nome: {$aluno->getNome()} \n\n";
 } */
 
 $nico = $alunoRepository->find($argv[1]);
 echo $nico->getNome();
 
 /* $felipe = $alunoRepository->findOneBy([
-    'id' => $argv[1]
+'id' => $argv[1]
 ]);
 
-var_dump($felipe); 
-*/
+var_dump($felipe);
+ */
