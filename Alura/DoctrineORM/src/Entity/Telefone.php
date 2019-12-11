@@ -51,4 +51,3 @@ class Telefone
         return $this;
     }
 }
-
