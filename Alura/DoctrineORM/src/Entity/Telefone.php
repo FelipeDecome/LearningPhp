@@ -18,7 +18,7 @@ class Telefone
      */
     private $numero;
     /**
-     * @ManyToOne(targetEntity="Aluno")
+     * @ManyToOne(targetEntity="Aluno", inversedBy="telefones")
      */
     private $aluno;
 

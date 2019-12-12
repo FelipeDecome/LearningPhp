@@ -9,16 +9,17 @@ require_once __DIR__ . '/../vendor/autoload.php';
 $aluno = new Aluno();
 $aluno->setNome($argv[1]);
 
-for ($i = 2; $i <= $argc; $i++) {
+$entityManagerFactory = new EntityManagerFactory();
+$entityManager = $entityManagerFactory->getEntityManager();
+
+for ($i = 2; $i < $argc; $i++) {
     $numeroTelefone = $argv[$i];
     $telefone = new Telefone();
     $telefone->setNumero($numeroTelefone);
 
-    $aluno->addTelefone($numeroTelefone);
+    $entityManager->persist($telefone);
+    $aluno->addTelefone($telefone);
 }
-
-$entityManagerFactory = new EntityManagerFactory();
-$entityManager = $entityManagerFactory->getEntityManager();
 
 $entityManager->persist($aluno);
 

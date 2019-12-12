@@ -18,12 +18,12 @@ foreach ($alunoList as $aluno) {
 }
 
 /* if (isset($argv)) {
-   foreach ($argv as $consults) {
-        if (is_numeric($consults)) {
-            $aluno = $alunoRepository->find($consults);
-            echo $aluno->getNome() . "\n\n";
-        }
-   } 
+foreach ($argv as $consults) {
+if (is_numeric($consults)) {
+$aluno = $alunoRepository->find($consults);
+echo $aluno->getNome() . "\n\n";
+}
+}
 
 } */
 
