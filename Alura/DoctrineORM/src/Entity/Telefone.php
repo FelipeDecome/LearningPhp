@@ -5,21 +5,20 @@ namespace Felipe\Doctrine\Entity;
 /**
  * @Entity
  */
-
 class Telefone
 {
     /**
      * @Id
      * @GeneratedValue
-     * @Column (type="integer")
+     * @Column(type="integer")
      */
     private $id;
     /**
-     * @Column (type="string")
+     * @Column(type="string")
      */
     private $numero;
     /**
-     * @ManyToOne (targetEntity="Aluno", inversedBy="telefones")
+     * @ManyToOne(targetEntity="Aluno")
      */
     private $aluno;
 
@@ -33,7 +32,7 @@ class Telefone
         return $this->numero;
     }
 
-    public function setNumero(Telefone $numero): self
+    public function setNumero(string $numero): self
     {
         $this->numero = $numero;
 

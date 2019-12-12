@@ -2,6 +2,7 @@
 
 namespace Felipe\Doctrine\Entity;
 
+use Doctrine\Common\Collections\Collection;
 use Doctrine\Common\Collections\ArrayCollection;
 
 /**
@@ -12,15 +13,15 @@ class Aluno
     /**
      * @Id
      * @GeneratedValue
-     * @Column (type="integer")
+     * @Column(type="integer")
      */
     private $id;
     /**
-     * @Column (type="string")
+     * @Column(type="string")
      */
     private $nome;
     /**
-     * @OneToMany (targetEntity="Telefone", mappedBy="aluno")
+     * @OneToMany(targetEntity="Telefone", mappedBy="aluno")
      */
     private $telefones;
 
@@ -28,7 +29,7 @@ class Aluno
     {
         $this->telefones = new ArrayCollection();
     }
-    
+
     public function getId(): int
     {
         return $this->id;
@@ -39,18 +40,17 @@ class Aluno
         return $this->nome;
     }
 
-
     public function setNome($nome): self
     {
         $this->nome = $nome;
         return $this;
     }
 
-    public function addTelefone(Telefone $telefone)
+    public function addTelefone(Telefone $telefone): self
     {
         $this->telefones->add($telefone);
         $telefone->setAluno($this);
-        
+
         return $this;
     }
 
