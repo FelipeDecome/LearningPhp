@@ -1,6 +1,7 @@
 <?php
 
 use Felipe\Doctrine\Entity\Aluno;
+use Felipe\Doctrine\Entity\Telefone;
 use Felipe\Doctrine\Helper\EntityManagerFactory;
 
 require_once __DIR__ . '/../vendor/autoload.php';
@@ -14,7 +15,15 @@ $alunoRepository = $entityManager->getRepository(Aluno::class);
 $alunoList = $alunoRepository->findAll();
 
 foreach ($alunoList as $aluno) {
-    echo "ID: {$aluno->getId()} > Nome: {$aluno->getNome()} \n\n";
+    $telefones = $aluno
+        ->getTelefones()
+        ->map(function (Telefone $telefone) {
+            return $telefone->getNumero();
+        })
+        ->toArray();
+
+    echo "ID: {$aluno->getId()} > Nome: {$aluno->getNome()} \n";
+    echo "Telefones" . implode(', ', $telefones) . "\n";
 }
 
 /* if (isset($argv)) {
