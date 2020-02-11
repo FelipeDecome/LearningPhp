@@ -9,7 +9,7 @@
   ],
   "autoload": {
     "psr-4": {
-      "MVC\\SOURCE\\": "src/"
+      "Mvc\\Source\\": "src/"
     }
   },
   "require": {
