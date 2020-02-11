@@ -1,0 +1,18 @@
+{
+  "name": "felipe/blog-system",
+  "type": "project",
+  "authors": [
+    {
+      "name": "FelipeDecome",
+      "email": "felipe.decome@hotmail.com"
+    }
+  ],
+  "autoload": {
+    "psr-4": {
+      "MVC\\SOURCE\\": "src/"
+    }
+  },
+  "require": {
+    "twbs/bootstrap": "^4.4"
+  }
+}
