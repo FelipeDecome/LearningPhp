@@ -2,6 +2,10 @@
 
 namespace Felipe\Doctrine\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
+use Felipe\Doctrine\Entity\Telefone;
+
 /**
  * @Entity
  */
@@ -19,6 +23,22 @@ class Cliente
      */
     private $name;
 
+    /**
+     * @OneToMany(targetEntity="Telefone", mappedBy="cliente", cascade={"remove", "persist"})
+     */
+    private $telefones;
+
+    /**
+     * @ManyToMany(targetEntity="Cursos", mappedBy="clientes")
+     */
+    private $cursos;
+
+    public function __construct()
+    {
+        $this->telefones = new ArrayCollection();
+        $this->cursos = new ArrayCollection();
+    }
+
     public function getId(): int
     {
         return $this->id;
@@ -34,5 +54,36 @@ class Cliente
         $this->name = $name;
 
         return $this;
+    }
+
+    public function addTelefone(Telefone $telefone): self
+    {
+        $this->telefones->add($telefone);
+        $telefone->setCliente($this);
+
+        return $this;
+    }
+
+    public function getTelefones(): Collection
+    {
+        return $this->telefones;
+    }
+
+    public function addCurso(Curso $curso): self
+    {
+
+        if ($this->cursos->contains($curso)) {
+            return $this;
+        }
+
+        $this->cursos->add($curso);
+        $curso->addCliente($this);
+
+        return $this;
+    }
+
+    public function getCursos(): Collection
+    {
+        return $this->cursos;
     }
 }
