@@ -4,6 +4,7 @@ namespace Felipe\Doctrine\Entity;
 
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
+use Felipe\Doctrine\Entity\Cursos;
 use Felipe\Doctrine\Entity\Telefone;
 
 /**
@@ -69,7 +70,7 @@ class Cliente
         return $this->telefones;
     }
 
-    public function addCurso(Curso $curso): self
+    public function addCurso(Cursos $curso): self
     {
 
         if ($this->cursos->contains($curso)) {

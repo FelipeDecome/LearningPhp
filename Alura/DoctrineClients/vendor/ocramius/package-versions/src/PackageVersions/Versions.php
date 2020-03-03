@@ -44,7 +44,7 @@ final class Versions
   'symfony/stopwatch' => 'v5.0.4@5d9add8034135b9a5f7b101d1e42c797e7f053e4',
   'zendframework/zend-code' => '3.4.1@268040548f92c2bfcba164421c1add2ba43abaaa',
   'zendframework/zend-eventmanager' => '3.2.1@a5e2583a211f73604691586b8406ff7296a946dd',
-  'felipe/doctrine-clients' => 'dev-master@aecb5fa6c60d6a8801a104d98b6762e91c9bdf3d',
+  'felipe/doctrine-clients' => 'dev-master@5b257ce290da4dc3dfa9c7dcbbf014edcb915d76',
 );
 
     private function __construct()

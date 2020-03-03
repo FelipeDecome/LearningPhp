@@ -3,6 +3,7 @@
 namespace Felipe\Doctrine\Entity;
 
 use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Felipe\Doctrine\Entity\Cliente;
 
 /**
@@ -43,7 +44,7 @@ class Cursos
         return $this->name;
     }
 
-    public function setName($name): self
+    public function setName(string $name): self
     {
         $this->name = $name;
 
@@ -62,7 +63,7 @@ class Cursos
         return $this;
     }
 
-    public function getClientes(): Cliente
+    public function getClientes(): Collection
     {
         return $this->clientes;
     }
